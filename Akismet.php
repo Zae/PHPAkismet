@@ -63,18 +63,18 @@ class Akismet{
   protected $site_url;
   
   /* This prevents some potentially sensitive information from being sent accross the wire. */
-	protected $ignore = array('HTTP_COOKIE', 
-							'HTTP_X_FORWARDED_FOR', 
-							'HTTP_X_FORWARDED_HOST', 
-							'HTTP_MAX_FORWARDS', 
-							'HTTP_X_FORWARDED_SERVER', 
-							'REDIRECT_STATUS', 
-							'SERVER_PORT', 
-							'PATH',
-							'DOCUMENT_ROOT',
-							'SERVER_ADMIN',
-							'QUERY_STRING',
-							'PHP_SELF' );
+  protected $ignore = array('HTTP_COOKIE', 
+              'HTTP_X_FORWARDED_FOR', 
+              'HTTP_X_FORWARDED_HOST', 
+              'HTTP_MAX_FORWARDS', 
+              'HTTP_X_FORWARDED_SERVER', 
+              'REDIRECT_STATUS', 
+              'SERVER_PORT', 
+              'PATH',
+              'DOCUMENT_ROOT',
+              'SERVER_ADMIN',
+              'QUERY_STRING',
+              'PHP_SELF' );
   
   /**
    * Set API URLS
@@ -90,20 +90,20 @@ class Akismet{
     $this->site_url = $site_url;
     
     $this->comment['blog'] = $this->site_url;
-		$this->comment['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-		if(isset($_SERVER['HTTP_REFERER'])) {
-			$this->comment['referrer'] = $_SERVER['HTTP_REFERER'];
-		}
+    $this->comment['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+    if(isset($_SERVER['HTTP_REFERER'])) {
+      $this->comment['referrer'] = $_SERVER['HTTP_REFERER'];
+    }
     
     /* 
-		 * This is necessary if the server PHP5 is running on has been set up to run PHP4 and
-		 * PHP5 concurently and is actually running through a separate proxy al a these instructions:
-		 * http://www.schlitt.info/applications/blog/archives/83_How_to_run_PHP4_and_PHP_5_parallel.html
-		 * and http://wiki.coggeshall.org/37.html
-		 * Otherwise the user_ip appears as the IP address of the PHP4 server passing the requests to the 
-		 * PHP5 one...
-		 */
-		$this->comment['user_ip'] = $_SERVER['REMOTE_ADDR'] != getenv('SERVER_ADDR') ? $_SERVER['REMOTE_ADDR'] : getenv('HTTP_X_FORWARDED_FOR');
+    * This is necessary if the server PHP5 is running on has been set up to run PHP4 and
+    * PHP5 concurently and is actually running through a separate proxy al a these instructions:
+    * http://www.schlitt.info/applications/blog/archives/83_How_to_run_PHP4_and_PHP_5_parallel.html
+    * and http://wiki.coggeshall.org/37.html
+    * Otherwise the user_ip appears as the IP address of the PHP4 server passing the requests to the 
+    * PHP5 one...
+    */
+    $this->comment['user_ip'] = $_SERVER['REMOTE_ADDR'] != getenv('SERVER_ADDR') ? $_SERVER['REMOTE_ADDR'] : getenv('HTTP_X_FORWARDED_FOR');
   }
   
   /**
@@ -164,69 +164,69 @@ class Akismet{
   }
   
   /**
-	 *	The IP of the user
-	 *
-	 *	@param string $userip
-	 */
-	public function set_user_ip($userip) {
-		$this->comment['user_ip'] = $userip;
-	}
-	
-	/**
-	 *	The referrer
-	 *
-	 *	@param string $referrer
-	 */
-	public function set_referrer($referrer) {
-		$this->comment['referrer'] = $referrer;
-	}
-	
-	/**
-	 *	A permanent URL referencing the blog post the comment was submitted to.
-	 *
-	 *	@param string $permalink
-	 */
-	public function set_permalink($permalink) {
-		$this->comment['permalink'] = $permalink;
-	}
-	
-	/**
-	 *	The type of comment being submitted.  
-	 *
-	 *	May be blank, comment, trackback, pingback, or a made up value like "registration" or "wiki".
-	 */
-	public function set_comment_type($commentType) {
-		$this->comment['comment_type'] = $commentType;
-	}
-	
-	/**
-	 *	The name that the author submitted with the comment.
-	 */
-	public function set_comment_author($commentAuthor) {
-		$this->comment['comment_author'] = $commentAuthor;
-	}
-	
-	/**
-	 *	The email address that the author submitted with the comment.
-	 *
-	 */
-	public function set_comment_author_email($authorEmail) {
-		$this->comment['comment_author_email'] = $authorEmail;
-	}
-	
-	/**
-	 *	The URL that the author submitted with the comment.
-	 */	
-	public function set_comment_author_url($authorURL) {
-		$this->comment['comment_author_url'] = $authorURL;
-	}
-	
-	/**
-	 *	The comment's body text.
-	 */
-	public function set_comment_content($commentBody) {
-		$this->comment['comment_content'] = $commentBody;
-	}
+  * The IP of the user
+  *
+  * @param string $userip
+  */
+  public function set_user_ip($userip) {
+    $this->comment['user_ip'] = $userip;
+  }
+  
+  /**
+  * The referrer
+  *
+  * @param string $referrer
+  */
+  public function set_referrer($referrer) {
+    $this->comment['referrer'] = $referrer;
+  }
+  
+  /**
+  * A permanent URL referencing the blog post the comment was submitted to.
+  *
+  * @param string $permalink
+  */
+  public function set_permalink($permalink) {
+    $this->comment['permalink'] = $permalink;
+  }
+  
+  /**
+  * The type of comment being submitted.  
+  *
+  * May be blank, comment, trackback, pingback, or a made up value like "registration" or "wiki".
+  */
+  public function set_comment_type($commentType) {
+    $this->comment['comment_type'] = $commentType;
+  }
+  
+  /**
+  * The name that the author submitted with the comment.
+  */
+  public function set_comment_author($commentAuthor) {
+    $this->comment['comment_author'] = $commentAuthor;
+  }
+  
+  /**
+  * The email address that the author submitted with the comment.
+  *
+  */
+  public function set_comment_author_email($authorEmail) {
+    $this->comment['comment_author_email'] = $authorEmail;
+  }
+  
+  /**
+  * The URL that the author submitted with the comment.
+  */
+  public function set_comment_author_url($authorURL) {
+    $this->comment['comment_author_url'] = $authorURL;
+  }
+  
+  /**
+  * The comment's body text.
+  */
+  public function set_comment_content($commentBody) {
+    $this->comment['comment_content'] = $commentBody;
+  }
   
   /**
    * Make an HTTP request
@@ -278,14 +278,14 @@ class Akismet{
     $ignore_list = array_merge($this->ignore, $ignore_list);
     
     foreach($_SERVER as $key => $value) {
-			if(!in_array($key, $ignore_list)) {
-				if($key == 'REMOTE_ADDR') {
-					$array[$key] = $this->comment['user_ip'];
-				} else {
-					$array[$key] = $value;
-				}
-			}
-		}
+      if(!in_array($key, $ignore_list)) {
+        if($key == 'REMOTE_ADDR') {
+          $array[$key] = $this->comment['user_ip'];
+        } else {
+          $array[$key] = $value;
+        }
+      }
+    }
     
     return $array;
   }
