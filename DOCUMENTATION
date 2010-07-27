@@ -1,0 +1,40 @@
+PHPAkismet documentation.
+
+
+GET THE CODE
+====================
+You can pull the latest development version using git:
+git clone git://github.com/Zae/PHPAkismet.git
+
+Or you can download the latest snapshot by visiting:
+http://github.com/Zae/PHPAkismet/archives/master
+
+
+EXAMPLE CODE
+====================
+$akismet = new Akismet( 'aoeu1aoue', 'http://www.example.com/blog/');
+$akismet->set_comment_author($name);
+$akismet->set_omment_authorEmail($email);
+$akismet->set_comment_author_url($url);
+$akismet->set_comment_content($comment);
+$akismet->set_permalink('http://www.example.com/blog/alex/someurl/');
+if($akismet->check_comment()){
+  // store the comment but mark it as spam (in case of a mis-diagnosis)
+}else{
+  // store the comment normally
+}
+
+Optionally you may wish to check if your WordPress API key is valid as in the example below.
+
+
+$akismet = new Akismet( 'aoeu1aoue', 'http://www.example.com/blog/');
+
+if($akismet->verify_key()) {
+  // api key is okay
+} else {
+  // api key is invalid
+}
+
+REQUIREMENTS
+====================
+*  You need PHP 5 and CURL installed.

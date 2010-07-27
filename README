@@ -1,0 +1,9 @@
+Ezra Pool | ezra@tsdme.nl
+
+A simple Akismet library for PHP 5
+
+REQUIREMENTS
+*  You need PHP 5 and CURL installed.
+
+Used some functions and idea's from Alex Potsides Akismet PHP 5 class
+http://www.achingbrain.net/
