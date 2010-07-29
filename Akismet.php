@@ -152,7 +152,7 @@ class Akismet{
   */
   public function submit_ham($comment=array()){
     $url = $this->ApiUrl()."submit-ham";
-    $this->comment = array_merge($this->comment, $comment);
+    $postfields = array_merge($this->comment, $comment);
     $postfields = $this->merge_server_globals($postfields);
     
     $response = $this->http_post($url, $postfields);
